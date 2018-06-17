@@ -23,6 +23,7 @@ main, nav, output, section, summary, time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+  font-family: Roboto, Arial, sans-serif;
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -42,7 +43,6 @@ table {
 body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  text-align: center;
 	line-height: 1.15;
 }
 
@@ -138,52 +138,72 @@ hr {
  *******************
 */
 
-section {
-  background: #fff;
-}
 
-main h1 {
-  font-family: 'Roboto', sans-serif;
-}
 
 /* HEADER */
 
-header {
-  display: inline-block;
-  width: 100%;
-  background: #000;
-}
-
-header nav {
-  float: right;
-}
-
-header nav li {
-  float: left;
-  margin-left: 10px;
-}
 
 /* EXAMPLE SECTION */
-
-section.example {
-  width: 100%;
+.cards {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.example .cards {
-  display: inline-block;
-  margin-bottom: -4px;
+.card {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  margin-bottom: 20px;
 }
 
-.example article {
-  float: left;
+.card:last-child {
+  margin-bottom: 0;
 }
+
+.card__content {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.card__header {
+  display: none;
+}
+
+.card__image {
+  width: 525px;
+  height: 350px;
+  background-color: #D8D8D8;
+  border: 1px solid #979797;
+}
+
+.card__info {
+  padding-left: 20px;
+  font-size: 11px;
+}
+
+.card__info-title {
+  margin-bottom: 13px;
+  font-weight: bold;
+}
+
+.card__info-adress {
+  margin-bottom: 13px;
+}
+
+
 
 /* FOOTER */
 
-footer {
-  display: block;
-  width: 100%;
-}
 
 /*
  *******************
@@ -212,7 +232,66 @@ footer {
 /* MEDIA FOR MEDIUM MOBILE DISPLAY */
 
 @media only screen and (max-width: 768px) and (min-width: 300px) {
+  .card {
+    flex-direction: column;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 0;
+  }
 
+  .card.visible {
+    cursor: default;
+  }
+  
+  .card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 24px;
+    border-bottom: 2px solid rgba(0,0,0,0.5);
+    padding: 16px 0;
+    font-size: 11px;
+  }
+
+  .card.visible .card__header {
+    border-bottom: none;
+  }
+
+  .card__info-title {
+    display: none;
+  }
+
+  .card__info-adress {
+    width: 50%;
+  }
+
+  .card__info-tel{
+    margin: 14px 0;
+  }
+
+  .card__info {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    padding-left: 0;
+    flex-wrap: wrap;
+    padding: 0 24px;
+  }
+  .card__image {
+    margin-bottom: 24px;
+    width: 100%;
+  }
+  .card__info-tel{
+    
+  }
+  .card__content{
+    display: none;
+  }
+  .card.visible .card__content {
+    display: block;
+  }
 }
 
 /* MEDIA FOR LITTLE MOBILE DISPLAY */
